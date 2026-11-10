@@ -9,33 +9,28 @@ export default class MultipleChoiceRiddle extends Riddle{
     }
     ask(prompt){
         const start=Date.now()/1000
-        const showChoices=this.choices.map((item,index)=>{return `\n ${index+1}: ${item}`})
-         // let answer=prompt(`${this.name} :${this.taskDescription} ${showChoices}\n`)
-         // if((Date.now()/1000)-start>=this.timeLimit){
-         //    console.log("Too slow! 5 seconds penalty applied.");
-         //    return false}
-            
-         // while(this.choices[answer-1]!=this.correctAnswer){
-         //     if((Date.now()/1000)-start>=this.timeLimit){
-         //    console.log("Too slow! 5 seconds penalty applied.");
-         //    return false}
-         //     answer=prompt(`${this.name} :${this.taskDescription} ${showChoices}\n`)
-
-         // }
+        console.log(`${this.name} : ${this.taskDescription}`)
+        this.choices.forEach((item,index)=>{
+            console.log(`${index+1}: ${item}`)
+        })
          let answer,panelty=0
          do{
-            answer=prompt(`${this.name} :${this.taskDescription} ${showChoices}\n`)
+            answer=prompt('Your answer: ')
             if((Date.now()/1000)-start>=this.timeLimit){
             console.log("Too slow! 5 seconds penalty applied.");
              return 5}
-            //  console.log(answer);
-             
+
              if(answer==="hint"){
                console.log(this.hint);
                panelty+=10
-               console.log("10 seconds penalty applied.");}
+               console.log("10 seconds penalty applied.");
+               continue
+             }
+             if(this.choices[answer-1]!=this.correctAnswer){
+               console.log("Wrong answer, try again.")
+             }
          }
          while(this.choices[answer-1]!=this.correctAnswer);
          return panelty;
-    
+
 }}
