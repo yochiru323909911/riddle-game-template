@@ -34,8 +34,6 @@ export default class MultipleChoiceRiddle extends Riddle{
                console.log(this.hint);
                panelty+=10
                console.log("10 seconds penalty applied.");}
-
-               
          }
          while(this.choices[answer-1]!=this.correctAnswer);
          return panelty;

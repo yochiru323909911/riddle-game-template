@@ -67,9 +67,7 @@ console.log('welcome to the game!');
 const name=prompt("what's your name?")
 const searchName=await playersApi.findPlayerByName(name)
 if(searchName){
-  console.log(`hello ${name} ! your previous lowest time was ${searchName.lowestTime}`);
-  console.log(searchName);
-  
+  console.log(`hello ${name} ! your previous lowest time was ${searchName.lowestTime}`);  
 }
 else{
   await playersApi.createPlayer(name)

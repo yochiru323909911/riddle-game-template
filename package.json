@@ -7,7 +7,7 @@
     "prompt-sync": "^4.2.0"
   },
   "scripts": {
-  "server": "json-server --watch db.json --port 3000"
+  "server": "json-server --watch db/db.json --port 3000"
 }
 
 }
